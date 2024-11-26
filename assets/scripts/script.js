@@ -90,3 +90,10 @@ document.getElementById('user-input').addEventListener('input', function() {
 
     document.getElementById('game-text').innerHTML = feedbackHTML;
 });
+
+document.getElementById('user-input').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent the default action of the Enter key
+        stopTest();
+    }
+});
