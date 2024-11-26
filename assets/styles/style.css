@@ -51,6 +51,32 @@ form {
     padding-top: 20px;
 }
 
+.correct-word {
+    color: blue;
+}
+
+.incorrect-word {
+    color: red;
+}
+
+/* .incorrect-word::after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+    background: red;
+    position: relative;
+    top: 2px;
+    animation: squiggly 0.1s linear infinite;
+} */
+
+@keyframes squiggly {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(1px); }
+    50% { transform: translateX(0); }
+    75% { transform: translateX(-1px); }
+    100% { transform: translateX(0); }
+}
 
 /* media queries */
 

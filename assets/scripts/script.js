@@ -28,7 +28,7 @@ document.getElementById('difficulty').addEventListener('change', function() {
         selectedText = hardTexts[Math.floor(Math.random() * hardTexts.length)];
     }
 
-    document.getElementById('game-text').value = selectedText;
+    document.getElementById('game-text').innerText = selectedText;
     document.getElementById('difficulty-text').innerText = difficulty.charAt(0).toUpperCase() + difficulty.slice(1);
 });
 
@@ -62,3 +62,21 @@ function stopTest() {
 document.getElementById('user-input').disabled = true;
 document.getElementById('start-button').addEventListener('click', startTest);
 document.getElementById('stop-button').addEventListener('click', stopTest);
+
+document.getElementById('user-input').addEventListener('input', function() {
+    const gameText = document.getElementById('game-text').innerText.split(' ');
+    const userInput = document.getElementById('user-input').value.split(' ');
+
+    let feedbackHTML = '';
+    for (let i = 0; i < gameText.length; i++) {
+        if (userInput[i] === undefined) {
+            feedbackHTML += `<span>${gameText[i]}</span> `;
+        } else if (userInput[i] === gameText[i]) {
+            feedbackHTML += `<span class="correct-word">${gameText[i]}</span> `;
+        } else {
+            feedbackHTML += `<span class="incorrect-word">${gameText[i]}</span> `;
+        }
+    }
+
+    document.getElementById('game-text').innerHTML = feedbackHTML;
+});
