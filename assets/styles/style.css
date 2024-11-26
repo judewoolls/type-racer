@@ -1,0 +1,33 @@
+header {
+    background-color: #ff8400;
+}
+
+.container {
+    margin-top: 40px;
+}
+
+/* #difficulty-label {
+    border: darkgray 1px solid;
+    background-color: lightgray;
+    border-radius: 4px;
+} */
+
+.game-button .btn{
+    background-color: white;
+    border: #ff8400 1px solid;
+}
+
+.game-button .btn:hover {
+    background-color: #ff8400;
+    color: white;
+}
+
+.game-button {
+    gap: 10px;
+}
+
+#results-box {
+    border: 3px solid #ff8400;
+    border-radius: 5px;
+    max-height: 200px;
+}
