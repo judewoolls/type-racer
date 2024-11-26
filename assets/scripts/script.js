@@ -42,6 +42,7 @@ function enableInput() {
     document.getElementById('user-input').focus(); // Focus on user input
     document.getElementById('start-button').disabled = true; // Disable start button
     document.getElementById('stop-button').disabled = false; // Enable stop button
+    document.getElementById('retry-button').disabled = true; // Disable retry button
 }
 
 function startTest() {
@@ -62,12 +63,36 @@ function stopTest() {
     document.getElementById('start-button').disabled = false;
     document.getElementById('stop-button').disabled = true;
     document.getElementById('user-input').disabled = true; // Disable user input
+    document.getElementById('retry-button').disabled = false; // Enable retry button
+    testStarted = false;
+}
+
+function retryTest() {
+    const difficulty = document.getElementById('difficulty').value;
+    let selectedText = '';
+
+    if (difficulty === 'easy') {
+        selectedText = easyTexts[Math.floor(Math.random() * easyTexts.length)];
+    } else if (difficulty === 'medium') {
+        selectedText = mediumTexts[Math.floor(Math.random() * mediumTexts.length)];
+    } else if (difficulty === 'hard') {
+        selectedText = hardTexts[Math.floor(Math.random() * hardTexts.length)];
+    }
+
+    document.getElementById('game-text').innerText = selectedText;
+    document.getElementById('user-input').value = ''; // Clear user input
+    document.getElementById('user-input').disabled = false; // Enable user input
+    document.getElementById('user-input').focus(); // Focus on user input
+    document.getElementById('start-button').disabled = true; // Disable start button
+    document.getElementById('stop-button').disabled = false; // Enable stop button
+    document.getElementById('retry-button').disabled = true; // Disable retry button
     testStarted = false;
 }
 
 document.getElementById('user-input').disabled = true;
 document.getElementById('start-button').addEventListener('click', enableInput);
 document.getElementById('stop-button').addEventListener('click', stopTest);
+document.getElementById('retry-button').addEventListener('click', retryTest);
 
 document.getElementById('user-input').addEventListener('input', function() {
     if (!testStarted) {

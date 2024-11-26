@@ -12,16 +12,42 @@
 </head>
 
 <body>
+    <!-- Instructions Modal -->
+    <div class="modal fade" id="instructionsModal" tabindex="-1" aria-labelledby="instructionsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="instructionsModalLabel">Instructions</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Welcome to the typing test! Here are the instructions:</p>
+                    <ul>
+                        <li>Select the difficulty level from the dropdown menu.</li>
+                        <li>Click the "Start" button to enable the text area.</li>
+                        <li>Start typing the displayed text as quickly and accurately as you can.</li>
+                        <li>The test will begin when you start typing.</li>
+                        <li>Click the "Stop" button to end the test and see your results.</li>
+                        <li>Click the "Retry" button to start a new test with a new text.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- heading -->
     <header class="text-white text-center py-5">
         <div class="container">
             <h1 class="display-4">TypeRacer</h1>
             <p class="lead">
-                <a href="#" class="btn btn-light btn-lg mt-3">Instructions</a>
+                <button type="button" class="btn btn-light btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#instructionsModal">Instructions</button>
             </p>
         </div>
     </header>
 
-    <!-- bootstrap container -->
+    <!-- bootstrap container for main content -->
     <div class="container">
         <div class="row">
             <div id="game-form" class="col-md-8">
@@ -47,7 +73,7 @@
                         <div class="d-flex justify-content-center game-button">
                             <button type="button" class="btn" id="start-button">Start</button>
                             <button type="button" class="btn" id="stop-button" disabled>Stop</button>
-                            <button type="button" class="btn">Retry</button>
+                            <button type="button" class="btn" id="retry-button" disabled>Retry</button>
                         </div>
                     </form>
                 </div>
