@@ -34,14 +34,19 @@ document.getElementById('difficulty').addEventListener('change', function() {
 
 let startTime;
 let endTime;
+let testStarted = false;
 
-function startTest() {
-    startTime = new Date();
-    document.getElementById('start-button').disabled = true;
-    document.getElementById('stop-button').disabled = false;
+function enableInput() {
     document.getElementById('user-input').value = ''; // Clear user input
     document.getElementById('user-input').disabled = false; // Enable user input
     document.getElementById('user-input').focus(); // Focus on user input
+    document.getElementById('start-button').disabled = true; // Disable start button
+    document.getElementById('stop-button').disabled = false; // Enable stop button
+}
+
+function startTest() {
+    startTime = new Date();
+    testStarted = true;
 }
 
 function stopTest() {
@@ -57,13 +62,18 @@ function stopTest() {
     document.getElementById('start-button').disabled = false;
     document.getElementById('stop-button').disabled = true;
     document.getElementById('user-input').disabled = true; // Disable user input
+    testStarted = false;
 }
 
 document.getElementById('user-input').disabled = true;
-document.getElementById('start-button').addEventListener('click', startTest);
+document.getElementById('start-button').addEventListener('click', enableInput);
 document.getElementById('stop-button').addEventListener('click', stopTest);
 
 document.getElementById('user-input').addEventListener('input', function() {
+    if (!testStarted) {
+        startTest();
+    }
+
     const gameText = document.getElementById('game-text').innerText.split(' ');
     const userInput = document.getElementById('user-input').value.split(' ');
 

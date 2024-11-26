@@ -70,13 +70,13 @@ form {
     animation: squiggly 0.1s linear infinite;
 } */
 
-@keyframes squiggly {
+/* @keyframes squiggly {
     0% { transform: translateX(0); }
     25% { transform: translateX(1px); }
     50% { transform: translateX(0); }
     75% { transform: translateX(-1px); }
     100% { transform: translateX(0); }
-}
+} */
 
 /* media queries */
 
