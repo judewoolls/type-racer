@@ -8,6 +8,7 @@
 /* styles */
 body {
     font-family: "Nunito", sans-serif !important;
+    min-height: 120vh;
 }
 
 header {
