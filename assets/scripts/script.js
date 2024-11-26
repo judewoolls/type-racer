@@ -47,7 +47,13 @@ function startTest() {
 function stopTest() {
     endTime = new Date();
     const timeTaken = (endTime - startTime) / 1000; // Time in seconds
+    const timeTakenMinutes = timeTaken / 60; // Time in minutes
+    const userInput = document.getElementById('user-input').value;
+    const wordCount = userInput.trim().split(/\s+/).length; // Count words
+    const wpm = wordCount / timeTakenMinutes; // Calculate WPM
+
     document.getElementById('time-text').innerText = timeTaken.toFixed(2) + 's';
+    document.getElementById('wpm-text').innerText = wpm.toFixed(2);
     document.getElementById('start-button').disabled = false;
     document.getElementById('stop-button').disabled = true;
     document.getElementById('user-input').disabled = true; // Disable user input
