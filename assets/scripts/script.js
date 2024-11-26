@@ -29,4 +29,30 @@ document.getElementById('difficulty').addEventListener('change', function() {
     }
 
     document.getElementById('game-text').value = selectedText;
+    document.getElementById('difficulty-text').innerText = difficulty.charAt(0).toUpperCase() + difficulty.slice(1);
 });
+
+let startTime;
+let endTime;
+
+function startTest() {
+    startTime = new Date();
+    document.getElementById('start-button').disabled = true;
+    document.getElementById('stop-button').disabled = false;
+    document.getElementById('user-input').value = ''; // Clear user input
+    document.getElementById('user-input').disabled = false; // Enable user input
+    document.getElementById('user-input').focus(); // Focus on user input
+}
+
+function stopTest() {
+    endTime = new Date();
+    const timeTaken = (endTime - startTime) / 1000; // Time in seconds
+    document.getElementById('time-text').innerText = timeTaken.toFixed(2) + 's';
+    document.getElementById('start-button').disabled = false;
+    document.getElementById('stop-button').disabled = true;
+    document.getElementById('user-input').disabled = true; // Disable user input
+}
+
+document.getElementById('user-input').disabled = true;
+document.getElementById('start-button').addEventListener('click', startTest);
+document.getElementById('stop-button').addEventListener('click', stopTest);
